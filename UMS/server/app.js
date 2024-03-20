@@ -195,7 +195,7 @@ const server = http.createServer(async (req, res) => {
                 .then((messaage) => {
                     console.log("Document updated successfully", messaage);
                     res.writeHead(200, { "Content-Type": "application/json" });
-                    res.end('Success!');  
+                    res.end('success');  
                 })
                 .catch((error) => {
                     console.log("Error updating document:", error);
@@ -213,20 +213,21 @@ if (req.method === "DELETE" && parsed_url.pathname === "/delete") {
     let body = "";
 
     req.on('data', (chunks) => {
+        console.log("chunks : ", chunks);
         body += chunks.toString();
     });
 
     req.on('end', async () => {
         console.log("body :",body)
+        console.log("type of body :",typeof(body))
 
         // For example, an '_id' field
-
-        let parsedData = JSON.parse(body)
-        console.log("parsedData: ", parsedData)
+        // let parsedData = JSON.parse(body)
+        // console.log("parsedData: ", parsedData)
         // console.log("type of parseddata :",typeof(parsedData))
     
-        let id = new ObjectId(parsedData._id)
-        const deleteQuery = {_id : id};
+        let id = new ObjectId(body)
+        // const deleteQuery = {_id : id};
         console.log("Id :", id);
 
         await collection.deleteOne(deleteQuery)

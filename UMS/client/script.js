@@ -68,9 +68,9 @@ async function handleSave(id) {
 
     let data = {
         id,
-        mytext,
+        mytext : name,
         email,
-        pass
+        pass : password
     }
 
     let json_data = JSON.stringify(data);
@@ -101,7 +101,7 @@ async function handleSave(id) {
 async function handleDelete(id) {
     console.log("id : ", id);
 
-     let response = await fetch("http://localhost:3000/deleteData",{
+     let response = await fetch("http://localhost:3000/delete",{
         method : "DELETE",
         headers : {
             "Content-Type" : "text/plain"
