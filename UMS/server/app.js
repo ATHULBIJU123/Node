@@ -36,18 +36,23 @@ const server = http.createServer(async (req, res) => {
     if (parsed_url.pathname === '/' && req.method === "GET") {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(fs.readFileSync('../client/index.html'));
+
     } else if (parsed_url.pathname === '/style.css' && req.method === "GET") {
         res.writeHead(200, { 'Content-Type': 'text/css' });
         res.end(fs.readFileSync('../client/style.css'));
+
     } else if (parsed_url.pathname === '/script.js' && req.method === "GET") {
         res.writeHead(200, { 'Content-Type': 'text/javascript' });
         res.end(fs.readFileSync('../client/script.js'));
+
     }else if(parsed_url.pathname === '/addData.html' && req.method === "GET") {
         res.writeHead(200, {'Content-Type' : 'text/html'});
         res.end(fs.readFileSync('../client/addData.html'));
+
     }else if(parsed_url.pathname === '/getData.html' && req.method === "GET") {
         res.writeHead(200, {'Content-Type' : 'text/html'});
         res.end(fs.readFileSync('../client/getData.html'));
+
     }else if(parsed_url.pathname === '/script.js' && req.method === "GET") {
         res.writeHead(200, {'Content-Type' : 'text/javascript'});
         res.end(fs.readFileSync('../client/script.js'));
@@ -219,15 +224,15 @@ if (req.method === "DELETE" && parsed_url.pathname === "/delete") {
 
     req.on('end', async () => {
         console.log("body :",body)
-        console.log("type of body :",typeof(body))
+        console.log("type of body :",typeof(body));
 
         // For example, an '_id' field
-        // let parsedData = JSON.parse(body)
-        // console.log("parsedData: ", parsedData)
-        // console.log("type of parseddata :",typeof(parsedData))
+        let parsedData = JSON.parse(body)
+        console.log("parsedData: ", parsedData)
+        console.log("type of parseddata :",typeof(parsedData))
     
-        let id = new ObjectId(body)
-        // const deleteQuery = {_id : id};
+        let id = new ObjectId(parsedData._id)
+        const deleteQuery = {_id : id};
         console.log("Id :", id);
 
         await collection.deleteOne(deleteQuery)

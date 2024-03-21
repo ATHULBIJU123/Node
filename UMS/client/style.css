@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     background-color: rgb(141, 252, 242);;
     color: rgb(32, 83, 128);
@@ -12,11 +17,6 @@ body {
     font-size: 25px;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 table {
     margin: auto;

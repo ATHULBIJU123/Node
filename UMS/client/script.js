@@ -100,11 +100,12 @@ async function handleSave(id) {
 
 async function handleDelete(id) {
     console.log("id : ", id);
+    console.log("type of (id) : ", typeof(id))
 
      let response = await fetch("http://localhost:3000/delete",{
         method : "DELETE",
         headers : {
-            "Content-Type" : "text/plain"
+            "Content-Type" : "application/json"
         },
         body : id,
     });
