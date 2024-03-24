@@ -41,4 +41,78 @@ const server = http.createServer((req, res) =>
         res.writeHead(200, { 'Content-Type': 'text/javascript' });
         res.end(fs.readFileSync('../Client/scr.js'));
     }
+
+
+    // if (req.method === "POST" && parsed_url.pathname === "/submit") {
+
+    //     let body = "";
+
+    //     req.on('data', (chunks) => {
+    //         console.log("Chunks :", chunks);
+    //         body = chunks.toString();
+    //         console.log("body : ", body);
+    //     });
+
+    //     req.on('end', async () => {
+    //         let formDatas = querystring.parse(body);
+    //         console.log("formDatas :", formDatas);
+
+    //         //Do something with the submitted Data ( Eg: Save to a database)
+
+
+    //         //Inserting formDatas to the database
+    //         await collection.insertOne(formDatas)
+    //             .then((message) => {
+    //                 console.log("Document inserted successfully")
+
+    //                 let response = {
+    //                     success: true,
+    //                     statusCode: 200,
+    //                     data: formDatas,
+    //                     message: "Form Datas submitted Successfully"
+    //                 }
+
+    //                 let json_response = JSON.stringify(response);
+    //                 console.log("json_response : ", json_response);
+
+    //                 res.writeHead(200, { "Content-Type": "text/json" });
+    //                 res.end(json_response);
+    //             })
+
+    //             .catch((error) => {
+    //                 console.log("Document insertion failed");
+
+    //                 let response = {
+    //                     success: false,
+    //                     statusCode: 400,
+    //                     data: formDatas,
+    //                     message: "Failed"
+    //                 }
+
+    //                 let json_response = JSON.stringify(response);
+    //                 console.log("json_response : ", json_response);
+
+    //                 res.writeHead(200, { "Content-Type": "text/json" });
+    //                 res.end(json_response);
+    //             })
+    //     });
+
+    // }
+
+
+
 })
+
+connect()
+    .then((message) => {
+        console.log('message :', message);
+    })
+    .catch((error) => {
+        console.log("error : ", error);
+    })
+    .finally(() => {
+        server.listen(port, () => {
+            console.log(`Server running at http://localhost:${port}`);
+        })
+
+    });

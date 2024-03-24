@@ -85,7 +85,7 @@ async function handleSave(id) {
     }
     )
 
-    let response_data = await response.text();
+    let response_data = await response.json();
     console.log("response_data : ", response_data);
 
     if(response_data === "success") {
@@ -102,20 +102,20 @@ async function handleDelete(id) {
     console.log("id : ", id);
     console.log("type of (id) : ", typeof(id))
 
-     let response = await fetch("http://localhost:3000/delete",{
+     let response = await fetch(`http://localhost:3000/delete?id=${id}`,{
         method : "DELETE",
         headers : {
-            "Content-Type" : "text/plain"
+            "Content-Type" : "application/json"
         },
-        parsedData : id,
+        body : id,
     });
-    let response_data = await response.text();
+    let response_data = await response.json();
     console.log("response_data : ", response_data);
 
-    if(response_data === "success") {
-        alert("Updation Success");
+    if(parsed_response === "success") {
+        alert("Deletion Success")
     }else {
-        alert("Updation failed");
+        alert("Deletion failed");
     }
     return response_data;
 }

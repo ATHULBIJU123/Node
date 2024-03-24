@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // Connect to MongoDB using Mongoose
 mongoose.connect('mongodb://127.0.0.1:27017/ums', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -55,7 +55,7 @@ function startServer() {
     });
 
     // Route to get form data
-    app.get('/getFormData', async (req, res) => {
+    app.get('/getData', async (req, res) => {
         try {
             const formDataArray = await UserModel.find();
 

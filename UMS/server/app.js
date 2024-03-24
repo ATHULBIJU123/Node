@@ -216,15 +216,15 @@ const server = http.createServer(async (req, res) => {
 //Delete
 if (req.method === "DELETE" && parsed_url.pathname === "/delete") {
     let body = "";
-
+    
     req.on('data', (chunks) => {
         console.log("chunks : ", chunks);
-        body = body += chunks.toString();
-        console.log("body :",body)
-        console.log("type of body :",typeof(body));
+        body += chunks.toString();
     });
 
     req.on('end', async () => {
+        console.log("body :",body)
+        console.log("type of body :",typeof(body))
 
         // For example, an '_id' field
         let parsedData = JSON.parse(body)
@@ -259,7 +259,7 @@ if (req.method === "DELETE" && parsed_url.pathname === "/delete") {
                     };
 
                     let json_response = JSON.stringify(response);
-                    res.writeHead(404, { "Content-Type": "text/plain" });
+                    res.writeHead(404, { "Content-Type": "application/json" });
                     res.end(json_response);
                 }
             })

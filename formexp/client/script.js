@@ -2,7 +2,7 @@ console.log("Hello javascript");
 
 async function getData() {
 
-let user_data = await fetch('http://localhost:3000/getData');
+let user_data = await fetch('http://localhost:5000/getData');
 console.log("user_data : ", user_data.response);//Network response
 console.log("typeOf(user_data) : ", typeof(user_data));
 
@@ -10,7 +10,7 @@ let parsed_user_data = await user_data.json();
 console.log("datas : ", parsed_user_data);
 console.log("typeOf(datas) : ", typeof(parsed_user_data));
 
-let datas = parsed_user_data.datas;
+let datas = parsed_user_data;
 
 let content = document.getElementById('content');
 let dataComponent = '';
@@ -102,7 +102,7 @@ async function handleDelete(id) {
     console.log("id : ", id);
     console.log("type of (id) : ", typeof(id))
 
-     let response = await fetch("http://localhost:3000/delete",{
+     let response = await fetch("http://localhost:5000/delete",{
         method : "DELETE",
         headers : {
             "Content-Type" : "text/plain"
