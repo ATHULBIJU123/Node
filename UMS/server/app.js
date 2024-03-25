@@ -231,6 +231,7 @@ if (req.method === "DELETE" && parsed_url.pathname === "/delete") {
         console.log("parsedData: ", parsedData)
         console.log("type of parseddata :",typeof(parsedData))
     
+        console.log("\n")
         let id = new ObjectId(parsedData._id)
         const deleteQuery = {_id : id};
         console.log("Id :", id);
