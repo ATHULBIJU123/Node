@@ -46,11 +46,13 @@ function startServer() {
 
             // Save the document to the "users" collection
             await user.save();
-
+            
             res.status(200).send('Form submitted successfully!');
+            return;
         } catch (error) {
             console.error('Error:', error);
             res.status(500).send('Internal Server Error');
+            return;
         }
     });
 
@@ -114,3 +116,5 @@ function startServer() {
         console.log(`Server is running on http://localhost:${port}`);
     });
 }
+
+startServer();

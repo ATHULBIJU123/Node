@@ -1,3 +1,5 @@
+const { log } = require("console");
+
 console.log("Hello javascript");
 
 async function getData() {
@@ -102,17 +104,22 @@ async function handleDelete(id) {
     console.log("id : ", id);
     console.log("type of (id) : ", typeof(id))
 
-     let response = await fetch(`http://localhost:3000/delete?id=${id}`,{
+    console.log("\n")
+    let parsedId = JSON.stringify(id);
+    console.log("parsed-Id :",parsedId);
+    console.log("type of parsed id :", typeof(parsedId))
+
+     let response = await fetch(`http://localhost:3000/delete`,{
         method : "DELETE",
         headers : {
             "Content-Type" : "application/json"
         },
-        body : id,
+        body : parsedId,
     });
     let response_data = await response.json();
     console.log("response_data : ", response_data);
 
-    if(parsed_response === "success") {
+    if(response_data === "success") {
         alert("Deletion Success")
     }else {
         alert("Deletion failed");
