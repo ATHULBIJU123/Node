@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.new{
+    /* display: inline-flex; */
+    flex-direction: column;
+    justify-content: center;
+    width: min-content;
+    margin: auto;
+    margin-top: 80PX;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+}
+table{
+    border: 2px solid black;
+}
