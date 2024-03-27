@@ -2,17 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // Connect to MongoDB using Mongoose
 mongoose.connect('mongodb://127.0.0.1:27017/ums', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-// db.once('open', () => {
-//     console.log('Connected to MongoDB');
-//     startServer();
-// });
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+    startServer();
+});
 
 // Define a mongoose schema for the "users" collection
 const userSchema = new mongoose.Schema({

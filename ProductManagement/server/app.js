@@ -8,6 +8,12 @@ const port = 4000;
 mongoose.connect('mongodb://127.0.0.1:27017/pms', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+    startServer();
+});
+
 const userSchema = new mongoose.Schema ({
     
     product: String,
@@ -47,6 +53,53 @@ function startServer() {
             res.status(500).send('Internal Server Error');
         }
     });
+
+    //Get single users data
+    app.get('/getSingleProductData/:id', async(req,res) => {
+        try{
+            const id = req.params.id;
+            const singleProduct = await UserModel.findById(id);
+            res.status(200).json(singleProduct);
+
+        }
+        catch (error){
+            console.error('Error : ',error);
+            res.status(500).send("Internal Server Error")
+        }
+    } )
+
+    //Edit Product Data
+    app.put('/editProductData/:id', async(req,res) => {
+        try {
+            const{id, product, price, size, quantity } = req.params.id;
+
+            //update product data by finding and updating document 
+            await UserModel.findByIdAndUpdate(id, {product, price, size, quantity});
+
+            res.status(200).send('Success');
+        }
+        catch (error) {
+            console.error("Error : ", error);
+            res.status(500).send('Internal Server Error!!');
+        }
+    });
+
+    //Delete Product Data
+    app.delete("/deleteProductData/:id", async(req, res) => {
+        try{
+            const id = req.params.id;
+
+            //Delete user data by findingn and removing the document
+            await UserModel.findByIdAndDelete(id);
+
+            res.status(200).send("Success");
+        }
+        catch (error){
+            console.error("Error :", error);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+
 
     app.listen(port, () => {
         console.log(`Server is running on http://localhost:${port}`);
