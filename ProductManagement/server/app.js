@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
@@ -71,14 +72,18 @@ function startServer() {
     //Edit Product Data
     app.put('/editProductData/:id', async(req,res) => {
         try {
-            const{id, product, price, size, quantity } = req.params.id;
+            const id  = req.params.id;
+            const { product, price, size, quantity } = req.body;
 
             //update product data by finding and updating document 
-            await UserModel.findByIdAndUpdate(id, {product, price, size, quantity});
+            const updatedProduct = await UserModel.findByIdAndUpdate(id, { product, price, size, quantity }, { new: true });
 
+            if (!updatedProduct) {
+                return res.status(404).send('Product not found');
+            }
+    
             res.status(200).send('Success');
-        }
-        catch (error) {
+        } catch (error) {
             console.error("Error : ", error);
             res.status(500).send('Internal Server Error!!');
         }
@@ -92,7 +97,7 @@ function startServer() {
             //Delete user data by findingn and removing the document
             await UserModel.findByIdAndDelete(id);
 
-            res.status(200).send("Success");
+            res.status(200).send("Deleted Successfully");
         }
         catch (error){
             console.error("Error :", error);
