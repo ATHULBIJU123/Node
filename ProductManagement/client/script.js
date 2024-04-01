@@ -9,23 +9,25 @@ async function getData() {
     console.log("parsed productData : ", parsed_productData)
     console.log ("type of parsed_productData :", typeof(parsed_productData));
 
-    let content = document.getElementById('content');
+    let container = document.getElementById('container');
     let productDetails = '';
 
     for(let i=0; i<parsed_productData.length; i++) {
         let editTag = `<value=${parsed_productData[i]._id}>Edit`;
         productDetails = productDetails + `
-        <h1>${parsed_productData[i].product}</h1>
-        <p class = "price">${parsed_productData[i].price}</p>
-        <p class = "size">${parsed_productData[i].size}</p>
-        <p class = "quantity">${parsed_productData[i].quantity}</p>
-
+        <h1 id = "product-${parsed_productData._id}">${parsed_productData[i].product}</h1>
+        <p class = "price" id = "price-${parsed_productData._id}">${parsed_productData[i].price}</p>
+        <p class = "size" id = "size-${parsed_productData._id}">${parsed_productData[i].size}</p>
+        <p class = "quantity" id = "quantity-${parsed_productData._id}">${parsed_productData[i].quantity}</p>
+        <button onclick="handleEdit('${parsed_productData[i]._id}')">Edit</button>
+        <button onclick="handleSave('${parsed_productData[i]._id}')">Save</button>
+        <button onclick="handleDelete('${parsed_productData[i]._id}')">Delete</button>
         `
     }
 
     console.log("productDetails :", productDetails);
-    console.log("content :", content)
-    content.innerHTML = productDetails;
+    console.log("container :", container)
+    container.innerHTML = productDetails;
 }
 
 getData();
