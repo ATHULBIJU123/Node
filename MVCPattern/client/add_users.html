@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <form>
+        <h2>REGISTRATION FORM</h2>
+
+
+        <!-- Text Input -->
+        <div id="firstname-group">
+            <label for="name">First Name:</label>
+            <input type="text" id="firstname" name="firstname" onkeyup="validatefirstname()">
+            <div id="firstname-error"></div>
+        </div>
+
+        <div id="lastname-group">
+            <label for=" name">Last Name:</label>
+            <input type="text" id="lastname" name="lastnane" onkeyup="validatelastlastname()">
+            <div id="lastname-error"></div>
+        </div>
+
+        <!--Email Input-->
+        <div id="email-group">
+            <label for "email">Email:</label>
+            <input type="email" id="email" name="email" onkeyup="validateEmail()">
+            <div id="email-error"></div>
+        </div>
+
+        <!-- Password Input-->
+        <div id="password-group">
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" onkeyup="validatePassword()">
+            <div id="password-error"></div>
+        </div>
+
+        <!-- Submit Button -->>
+        <button type="button" onclick="submitForm()">Submit</button>
+
+    </form>
+
+</body>
+
+</html>
