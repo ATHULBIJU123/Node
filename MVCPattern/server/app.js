@@ -12,7 +12,7 @@ connect();
 app.use(express.static(__dirname + '/../client'));
 
 //Parsing form datas
-app.use(express.urlencoded(({extended: true}));
+app.use(express.urlencoded(({extended: true})));
 
 //Parsing 35ON datas
 app.use(express.json());
