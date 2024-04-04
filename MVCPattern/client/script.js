@@ -70,10 +70,10 @@ async function getData() {
 
         <tr>
         <td>${pd[i]._id}</td>
-        <td><input type="text" name="firstname" id="firstname-${pd[i].id}" value
-        <td><input type="text" name="lastname" id="lastname-${pd[i].id}" value
-        <td><input type="email" name="email" id="email-${pd[1]._id}" value="${parsedData}"
-        <td><input type="password" name="password" id="password-${pd[1]._id}"
+        <td><input type="text" name="firstname" id="firstname-${pd[i].id}" value="${parsedData}"
+        <td><input type="text" name="lastname" id="lastname-${pd[i].id}" value="${parsedData}"
+        <td><input type="email" name="email" id="email-${pd[i].id}" value="${parsedData}"
+        <td><input type="password" name="password" id="password-${pd[i].id}" value="${parsedData}"
         <td><button onclick="handleEdit('${pd[i]._id} ')">Edit</button></td> 
         <td><button onclick="handleSave("${pd[i]._id}') ">Save</button></td>
         </tr>

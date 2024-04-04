@@ -1,4 +1,4 @@
-const users = require ('..db/models/users');
+const users = require ('../db/models/users');
 
 exports.createUser = async function (req, res) {
     try {
@@ -13,9 +13,16 @@ exports.createUser = async function (req, res) {
         //     return;
         // }
 
+        let email_count = await users.countDocuments({email});
+
+        if(email_count >0) {
+            res.status(400).send("Email already exists");
+            return;
+        }
+
         const new_user = new users({
-            firstname : firstname,
-            lastname : lastname,
+            firstName : firstname,
+            lastName : lastname,
             email,
             password,
         })

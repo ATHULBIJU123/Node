@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/../client'));
 //Parsing form datas
 app.use(express.urlencoded(({extended: true})));
 
-//Parsing 35ON datas
+//Parsing JSON datas
 app.use(express.json());
 
 //userRoutes
