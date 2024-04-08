@@ -35,9 +35,12 @@ async function submitForm() {
     let parsed_response = await response.json();
 
     if (parsed_response.success) {
+        console.log(parsed_response.message);
         alert("Form submitted successfully");
+        return;
     } else {
         alert(parsed_response.message);
+        return;
     }
 }
 
@@ -70,10 +73,10 @@ async function getData() {
 
         <tr>
         <td>${pd[i]._id}</td>
-        <td><input type="text" name="firstname" id="firstname-${pd[i].id}" value="${parsedData}"
-        <td><input type="text" name="lastname" id="lastname-${pd[i].id}" value="${parsedData}"
-        <td><input type="email" name="email" id="email-${pd[i].id}" value="${parsedData}"
-        <td><input type="password" name="password" id="password-${pd[i].id}" value="${parsedData}"
+        <td><input type="text" name="firstname" id="firstname-${pd[i].id}" value="${pd[i].firstname}" disabled = true></td>
+        <td><input type="text" name="lastname" id="lastname-${pd[i].id}" value="${pd[i].lastname}" disabled = true></td>
+        <td><input type="email" name="email" id="email-${pd[i].id}" value="${pd[i].email}" disabled = true></td>
+        <td><input type="password" name="password" id="password-${pd[i].id}" value="${pd[i].password}" disabled = true></td>
         <td><button onclick="handleEdit('${pd[i]._id} ')">Edit</button></td> 
         <td><button onclick="handleSave("${pd[i]._id}') ">Save</button></td>
         </tr>
@@ -158,6 +161,7 @@ async function handleSave(id) {
     } else {
         alert("Updation Failed");
     }
+    return;
 }
 
 
@@ -221,6 +225,7 @@ function validateEmail() {
     }else {
         email_error.innerHTML = "";
     }
+    return;
 
 }
 
@@ -231,7 +236,7 @@ function validatePassword() {
 
     let password_error = document.getElementById('password-error');
 
-    let password_regex = /^(?=.*[a-z]) (?=,*[A-Z]) (7=.*\d) (?=.*[@.#$!%*76^]) [A-Z]/
+    let password_regex = /^(?=.*[a-z])(?=,*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/;
 
     let isPasswordvalid = password_regex.test(password); 
     console.log("isPasswordvalid: ",isPasswordvalid);
@@ -241,9 +246,7 @@ function validatePassword() {
     }else {
     password_error.innerHTML = ""; 
     return;
-
     }
-
 }
 
 //login
