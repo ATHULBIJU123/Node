@@ -14,17 +14,29 @@ exports.createUser = async function (req, res) {
         console.log("password :", password);
 
         //Validations
-        // if(!name) {
-        //     res.status(400).send("Name is required");
-        //     return;
-        // }
+        if(!firstname) {
+            res.status(400).send("First Name is required");
+            return;
+        }
+        else if (!lastname){
+            res.status(400).send("Last Name is required");
+            return;
+        }
+        else if (!email){
+            res.status(400).send("Email is required");
+            return;
+        }
+        else if (!password) {
+            res.status(400).send("Password is required");
+            return;
+        }
 
         let email_count = await users.countDocuments({email});
 
         if(email_count >0) {
 
             let response = error_function ({
-                statusCode : 400,
+                statusCode : 401,
                 message : "Email alrady exists"
             });
 
@@ -42,7 +54,7 @@ exports.createUser = async function (req, res) {
             firstName : firstname,
             lastName : lastname,
             email,
-            hashed_password,
+            password : hashed_password,
         });
 
         const saved_user = await new_user.save();
@@ -108,7 +120,42 @@ exports.getUsers = async function (req, res) {
     } 
 }
 
+console.log("\n")
+
 exports.getSingleUser = async function (req, res){
+    // console.log("Single User");
+    try {
+        console.log("Single User")
+        const singleUser = await users.params
+
+        if(singleUser) {
+            let response = success_function({
+                statusCode:200,
+                data : singleUser,
+                message : `Data of ${id}`
+            })
+            res.status(200).send(response);
+            return;
+        }else {
+            let response = error_function ({
+                statusCode : 400,
+                message : "Doesn't find any user",
+            })
+            res.status(400).send(response);
+            return;
+        }
+
+
+
+    } catch (error) {
+            let response = error_function ({
+            statusCode : 400,
+            message : "Something went wrong",
+        })
+        console.log("error : ", error);
+        res.status(400).send(response);
+        return ;
+    }
 
 }
 
