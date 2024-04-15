@@ -125,44 +125,129 @@ console.log("\n")
 exports.getSingleUser = async function (req, res){
     // console.log("Single User");
     try {
-        console.log("Single User")
-        const singleUser = await users.params
-
-        if(singleUser) {
-            let response = success_function({
-                statusCode:200,
-                data : singleUser,
-                message : `Data of ${id}`
-            })
-            res.status(200).send(response);
-            return;
-        }else {
-            let response = error_function ({
-                statusCode : 400,
-                message : "Doesn't find any user",
-            })
-            res.status(400).send(response);
+        const userId = req.params.id;
+        
+        if (!userId) {
+            res.status(400).send("User ID is required");
             return;
         }
 
+        const user = await users.findById(userId);
 
+        if (!user) {
+            res.status(404).send("User not found");
+            return;
+        }
 
+        const userData = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+        };
+
+        let response = {
+            statusCode: 200,
+            data: userData,
+            message: "User found successfully",
+        };
+
+        res.status(200).send(response);
     } catch (error) {
-            let response = error_function ({
-            statusCode : 400,
-            message : "Something went wrong",
-        })
+        let response = {
+            statusCode: 500,
+            message: "Internal Server Error",
+        };
         console.log("error : ", error);
-        res.status(400).send(response);
-        return ;
+        res.status(500).send(response);
     }
-
 }
+
+console.log("\nUpdate User")
 
 exports.updateUser = async function (req, res) {
+    try {
+        const userId = req.body.userId; 
+        const updatedData = req.body.updatedData;
 
+        // Validation
+        if (!userId) {
+            res.status(400).send("User ID is required");
+            return;
+        }
+
+        if (!updatedData || Object.keys(updatedData).length === 0) {
+            res.status(400).send("Updated data is required");
+            return;
+        }
+
+        const user = await users.findById(userId);
+
+        if (!user) {
+            res.status(404).send("User not found");
+            return;
+        }
+
+        for (let key in updatedData) {
+            user[key] = updatedData[key];
+        }
+
+        const updatedUser = await user.save();
+
+        const userData = {
+            firstName: updatedUser.firstName,
+            lastName: updatedUser.lastName,
+            email: updatedUser.email,
+        };
+
+        let response = {
+            statusCode: 200,
+            data: userData,
+            message: "User updated successfully",
+        };
+
+        res.status(200).send(response);
+    } catch (error) {
+        let response = {
+            statusCode: 500,
+            message: "Internal Server Error",
+        };
+        console.log("error : ", error);
+        res.status(500).send(response);
+    }
 }
 
-exports.deleteUser = async function (req, res) {
-    
+
+exports.deleteUser = async function(req, res) {
+    try {
+        const userId = req.params.id;
+
+        // Validation
+        if (!userId) {
+            res.status(400).send("User ID is required");
+            return;
+        }
+
+        const user = await users.findById(userId);
+
+        if (!user) {
+            res.status(404).send("User not found");
+            return;
+        }
+
+        await users.findByIdAndDelete(userId);
+
+        let response = {
+            statusCode: 200,
+            message: "User deleted successfully",
+        };
+
+        res.status(200).send(response);
+    } catch (error) {
+        let response = {
+            statusCode: 500,
+            message: "Internal Server Error",
+        };
+        console.log("error : ", error);
+        res.status(500).send(response);
+    }
 }
