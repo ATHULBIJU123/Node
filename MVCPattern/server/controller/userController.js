@@ -103,7 +103,7 @@ exports.getUsers = async function (req, res) {
         }else {
             let response = error_function ({
                 statusCode : 400,
-                message : "Failed to get Data",
+                message: "Failed to get Data",
             })
             res.status(400).send(response);
             return;
@@ -162,43 +162,40 @@ exports.getSingleUser = async function (req, res){
     }
 }
 
-console.log("\nUpdate User")
+console.log("\n")
 
 exports.updateUser = async function (req, res) {
     try {
-        const userId = req.body.userId; 
-        const updatedData = req.body.updatedData;
-
+        const userId = req.body.id; 
+        // const updatedData = req.body
+        console.log("req.body :",req.body)
         // Validation
         if (!userId) {
             res.status(400).send("User ID is required");
             return;
         }
 
-        if (!updatedData || Object.keys(updatedData).length === 0) {
-            res.status(400).send("Updated data is required");
-            return;
-        }
-
-        const user = await users.findById(userId);
-
+        // if (!updatedData) {
+        //     res.status(400).send("Updated data is required");
+        //     return;
+        // }
+        const user = await users.findOneAndUpdate(req.body);
+        
         if (!user) {
             res.status(404).send("User not found");
             return;
         }
-
-        for (let key in updatedData) {
-            user[key] = updatedData[key];
-        }
-
+ 
         const updatedUser = await user.save();
-
+        
         const userData = {
             firstName: updatedUser.firstName,
             lastName: updatedUser.lastName,
             email: updatedUser.email,
+            password : updatedUser.password
         };
-
+        
+        // console.log("Reached Here..")
         let response = {
             statusCode: 200,
             data: userData,
