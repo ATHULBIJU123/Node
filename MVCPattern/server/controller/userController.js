@@ -15,19 +15,40 @@ exports.createUser = async function (req, res) {
 
         //Validations
         if(!firstname) {
-            res.status(400).send("First Name is required");
+            let response = error_function ({
+                statusCode : 401,
+                message : "First Name is required"
+            });
+
+            res.status(400).send(response);
             return;
         }
+
         else if (!lastname){
-            res.status(400).send("Last Name is required");
+            let response = error_function ({
+                statusCode : 401,
+                message : "Last Name is required"
+            });
+
+            res.status(400).send(response);
             return;
         }
         else if (!email){
-            res.status(400).send("Email is required");
+            let response = error_function ({
+                statusCode : 401,
+                message : "Email is required"
+            });
+
+            res.status(400).send(response);
             return;
         }
         else if (!password) {
-            res.status(400).send("Password is required");
+            let response = error_function ({
+                statusCode : 401,
+                message : "Password Name is required"
+            });
+
+            res.status(400).send(response);
             return;
         }
 
@@ -44,6 +65,33 @@ exports.createUser = async function (req, res) {
             return;
         }
 
+
+        let firstname_regexp = /^[A-Z]{2,30}([a-zA-Z]{2,30})?$/;
+
+        let validFirstName = firstname_regexp.test(firstname);
+        console.log("validity of firstname: ", validFirstName);
+
+
+        if(firstname.length < 2){
+            let response = error_function ({
+                statusCode : 401,
+                message : "Firstname is too short"
+            });
+
+            res.status(400).send(response);
+            return;
+        }
+        else if(firstname.length > 30){
+            let response = error_function ({
+                statusCode : 401,
+                message : "Firstname is too long"
+            });
+
+            res.status(400).send(response);
+            return;
+        }
+
+        
         let salt = await bcrypt.genSalt(10);
         console.log("salt :",salt);
 
@@ -128,14 +176,24 @@ exports.getSingleUser = async function (req, res){
         const userId = req.params.id;
         
         if (!userId) {
-            res.status(400).send("User ID is required");
+            let response = error_function ({
+                statusCode : 401,
+                message : "User Id is required"
+            });
+
+            res.status(400).send(response);
             return;
         }
 
         const user = await users.findById(userId);
 
         if (!user) {
-            res.status(404).send("User not found");
+            let response = error_function ({
+                statusCode : 401,
+                message : "User not found"
+            });
+
+            res.status(400).send(response);
             return;
         }
 
@@ -171,7 +229,12 @@ exports.updateUser = async function (req, res) {
         console.log("req.body :",req.body)
         // Validation
         if (!userId) {
-            res.status(400).send("User ID is required");
+            let response = error_function ({
+                statusCode : 401,
+                message : "User Id is required"
+            });
+
+            res.status(400).send(response);
             return;
         }
 
@@ -179,7 +242,7 @@ exports.updateUser = async function (req, res) {
         //     res.status(400).send("Updated data is required");
         //     return;
         // }
-        const user = await users.findOneAndUpdate(req.body);
+        const user = await users.findByIdAndUpdate(req.body);
         
         if (!user) {
             res.status(404).send("User not found");
@@ -220,14 +283,24 @@ exports.deleteUser = async function(req, res) {
 
         // Validation
         if (!userId) {
-            res.status(400).send("User ID is required");
-            return;
+            let response = error_function ({
+                statusCode : 401,
+                message : "User Id is required"
+            });
+
+            res.status(400).send(response);
+            return;;
         }
 
         const user = await users.findById(userId);
 
         if (!user) {
-            res.status(404).send("User not found");
+            let response = error_function ({
+                statusCode : 401,
+                message : "User not found"
+            });
+
+            res.status(400).send(response);
             return;
         }
 
