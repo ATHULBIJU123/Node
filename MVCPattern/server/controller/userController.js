@@ -66,11 +66,20 @@ exports.createUser = async function (req, res) {
         }
 
 
-        let firstname_regexp = /^[A-Z]{2,30}([a-zA-Z]{2,30})?$/;
+        let firstname_regexp = /^[A-Z]([a-zA-Z]{2,30})?$/;
 
         let validFirstName = firstname_regexp.test(firstname);
         console.log("validity of firstname: ", validFirstName);
 
+        if(!validFirstName) {
+            let response = error_function ({
+                statusCode : 401,
+                message : "First name is invalid"
+            });
+
+            res.status(400).send(response);
+            return;
+        }
 
         if(firstname.length < 2){
             let response = error_function ({
@@ -81,10 +90,44 @@ exports.createUser = async function (req, res) {
             res.status(400).send(response);
             return;
         }
-        else if(firstname.length > 30){
+        if(firstname.length > 30){
             let response = error_function ({
                 statusCode : 401,
                 message : "Firstname is too long"
+            });
+
+            res.status(400).send(response);
+            return;
+        }
+
+
+        let lastname_regexp = /^[A-Z]([a-zA-Z]{2,30})?$/;
+        let validLastName = lastname_regexp.test(lastname);
+        console.log("validity of firstname: ", validLastName);
+
+        if(!validLastName) {
+            let response = error_function ({
+                statusCode : 401,
+                message : "Last name is invalid"
+            });
+
+            res.status(400).send(response);
+            return;
+        }
+
+        if(lastname.length < 2){
+            let response = error_function ({
+                statusCode : 401,
+                message : "Lasstname is too short"
+            });
+
+            res.status(400).send(response);
+            return;
+        }
+        if(lastname.length > 30){
+            let response = error_function ({
+                statusCode : 401,
+                message : "Lastname is too long"
             });
 
             res.status(400).send(response);
@@ -171,7 +214,6 @@ exports.getUsers = async function (req, res) {
 console.log("\n")
 
 exports.getSingleUser = async function (req, res){
-    // console.log("Single User");
     try {
         const userId = req.params.id;
         
@@ -203,19 +245,18 @@ exports.getSingleUser = async function (req, res){
             email: user.email,
         };
 
-        let response = {
+        let response = success_function({
             statusCode: 200,
             data: userData,
             message: "User found successfully",
-        };
-
+        })
         res.status(200).send(response);
+
     } catch (error) {
-        let response = {
+        let response = error_function({
             statusCode: 500,
             message: "Internal Server Error",
-        };
-        console.log("error : ", error);
+        })
         res.status(500).send(response);
     }
 }
@@ -225,6 +266,7 @@ console.log("\n")
 exports.updateUser = async function (req, res) {
     try {
         const userId = req.body.id; 
+        //find a user using this id, if user not exists give error response
         // const updatedData = req.body
         console.log("req.body :",req.body)
         // Validation
@@ -233,45 +275,35 @@ exports.updateUser = async function (req, res) {
                 statusCode : 401,
                 message : "User Id is required"
             });
-
             res.status(400).send(response);
             return;
         }
 
-        // if (!updatedData) {
-        //     res.status(400).send("Updated data is required");
-        //     return;
-        // }
-        const user = await users.findByIdAndUpdate(req.body);
+
+        const user = await users.findOneAndUpdate({_id : req.body.id},{
+            firstName : req.body.firstname,
+            lastName : req.body.lastname,
+            email : req.body.email,
+        },{
+            upsert: true // Make this update into an upsert
+          });
         
+          console.log("user :", user);
+
         if (!user) {
             res.status(404).send("User not found");
             return;
         }
- 
-        const updatedUser = await user.save();
-        
-        const userData = {
-            firstName: updatedUser.firstName,
-            lastName: updatedUser.lastName,
-            email: updatedUser.email,
-            password : updatedUser.password
-        };
-        
-        // console.log("Reached Here..")
-        let response = {
-            statusCode: 200,
-            data: userData,
-            message: "User updated successfully",
-        };
+        else {
+            res.status(200).send("User updated Succesfully")
+            return;
+        }
 
-        res.status(200).send(response);
     } catch (error) {
-        let response = {
+        let response = error_function({
             statusCode: 500,
             message: "Internal Server Error",
-        };
-        console.log("error : ", error);
+        })
         res.status(500).send(response);
     }
 }
