@@ -65,9 +65,9 @@ exports.createUser = async function (req, res) {
             return;
         }
 
+        //Validating firstname
 
         let firstname_regexp = /^[A-Z]([a-zA-Z]{2,30})?$/;
-
         let validFirstName = firstname_regexp.test(firstname);
         console.log("validity of firstname: ", validFirstName);
 
@@ -101,6 +101,7 @@ exports.createUser = async function (req, res) {
         }
 
 
+        //Validating lastname
         let lastname_regexp = /^[A-Z]([a-zA-Z]{2,30})?$/;
         let validLastName = lastname_regexp.test(lastname);
         console.log("validity of firstname: ", validLastName);
@@ -134,6 +135,32 @@ exports.createUser = async function (req, res) {
             return;
         }
 
+
+        //validating email
+        let email_regexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        let emailvalidity = email_regexp.test(email); 
+        console.log("validity of email: ", emailvalidity);
+        if(!emailvalidity){
+            let response = error_function ({
+                statusCode : 401,
+                message : "Invalid email"
+            });
+
+            res.status(400).send(response);
+            return;
+        }
+
+        //Validating password
+        let password_regex = /^(?=.*[a-z])(?=,*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+        let passwordvalidity = password_regex.test(password); 
+        console.log("isPasswordvalid: ",passwordvalidity);
+
+        if(passwordvalidity){
+            let response = error_function ({
+                statusCode : 401,
+                message : "Invalid password"
+            });
+        }
         
         let salt = await bcrypt.genSalt(10);
         console.log("salt :",salt);
@@ -291,11 +318,19 @@ exports.updateUser = async function (req, res) {
           console.log("user :", user);
 
         if (!user) {
-            res.status(404).send("User not found");
+            let response = error_function ({
+                statusCode : 404,
+                message : "User not found"
+            })
+            res.status(404).send(response);
             return;
         }
-        else {
-            res.status(200).send("User updated Succesfully")
+        else { 
+            let response = success_function ({
+                statusCode : 200,
+                message : "User updated Succesfully"
+            })
+            res.status(200).send(response)
             return;
         }
 
@@ -338,17 +373,17 @@ exports.deleteUser = async function(req, res) {
 
         await users.findByIdAndDelete(userId);
 
-        let response = {
+        let response = success_function ({
             statusCode: 200,
             message: "User deleted successfully",
-        };
-
+        });
         res.status(200).send(response);
+
     } catch (error) {
-        let response = {
+        let response = error_function ({
             statusCode: 500,
             message: "Internal Server Error",
-        };
+        });
         console.log("error : ", error);
         res.status(500).send(response);
     }
