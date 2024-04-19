@@ -80,3 +80,8 @@ table,th,td {
     border-collapse: collapse;
     padding: 10px;
 }
+
+.page{
+    margin: auto;
+    display: inline-block;
+}

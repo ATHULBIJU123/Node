@@ -79,6 +79,8 @@ async function getData() {
         <td><input type="password" name="password" id="password-${pd[i].id}" value="${pd[i].password}" disabled = true></td>
         <td><button onclick="handleEdit('${pd[i]._id} ')">Edit</button></td> 
         <td><button onclick="handleSave("${pd[i]._id}') ">Save</button></td>
+        <td><button onclick="handleDelete('${pd[i]._id}')">Delete</button></td>
+
         </tr>
         `
 
@@ -146,7 +148,7 @@ async function handleSave(id) {
     let jsonData = JSON.stringify(data);
     console.log("jsonData: ", jsonData);
 
-    let response = await fetch('/editData', {
+    let response = await fetch('/users', {
         method: 'PUT',
         Headers: {
             "Content-Type": "application/json",
@@ -171,7 +173,7 @@ function validatefirstName() {
 
     let firstname_error = document.getElementById('firstname-error');
 
-    let firstname_regex = /^[a-zA-Z]{2,30}([a-zA-Z]{2,30})?$/;
+    let firstname_regex = /^[A-Z]([a-zA-Z]{2,30})?$/;
 
     let isfirstNameValid = firstname_regex.test(firstname);
     console.log("isfirstNameValid: ", isfirstNameValid);
@@ -192,7 +194,7 @@ function validatelastName() {
 
     let lastname_error = document.getElementById('lastname-error');
 
-    let lastname_regex= /^[a-zA-Z]{2,30}([a-zA-Z]{2,30})?$/;
+    let lastname_regex= /^[A-Z]([a-zA-Z]{2,30})?$/;
 
     let islastNameValid = lastname_regex.test(lastname); 
     console.log("islastNameValid: ", islastNameValid);
