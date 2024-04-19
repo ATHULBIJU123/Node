@@ -12,8 +12,8 @@ async function submitForm() {
     console.log("password: ", password);
 
     let data = {
-        firstname,
-        lastname,
+        firstName : firstname,
+        lastName : lastname,
         email,
         password
     }
@@ -50,7 +50,7 @@ async function getData() {
     let token = localStorage.getItem('token');
     console.log("token", token);
 
-    let data = await fetch('http://localhost:3001/getData', {
+    let data = await fetch('http://localhost:3001/users', {
         "method": "GET",
         "headers": {
             "authorization": `Bearer ${token}`
@@ -73,8 +73,8 @@ async function getData() {
 
         <tr>
         <td>${pd[i]._id}</td>
-        <td><input type="text" name="firstname" id="firstname-${pd[i].id}" value="${pd[i].firstname}" disabled = true></td>
-        <td><input type="text" name="lastname" id="lastname-${pd[i].id}" value="${pd[i].lastname}" disabled = true></td>
+        <td><input type="text" name="firstname" id="firstname-${pd[i].id}" value="${pd[i].firstName}" disabled = true></td>
+        <td><input type="text" name="lastname" id="lastname-${pd[i].id}" value="${pd[i].lastName}" disabled = true></td>
         <td><input type="email" name="email" id="email-${pd[i].id}" value="${pd[i].email}" disabled = true></td>
         <td><input type="password" name="password" id="password-${pd[i].id}" value="${pd[i].password}" disabled = true></td>
         <td><button onclick="handleEdit('${pd[i]._id} ')">Edit</button></td> 
@@ -135,8 +135,8 @@ async function handleSave(id) {
 
     let data = {
         id,
-        firstname,
-        lastname,
+        firstName : firstname,
+        lastName : lastname,
         email,
         password,
 

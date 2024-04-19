@@ -14,7 +14,7 @@ form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -68,4 +68,15 @@ input[type="submit"]:hover {
 
 #firstname-error,#lastname-error,#email-error,#password-error {
     color: red;
+}
+
+table{
+    border: 2px solid black;
+    margin: auto;
+}
+
+table,th,td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 10px;
 }
