@@ -15,7 +15,7 @@ exports.login = async function (req, res) {
         let password = req.body.password;
         console.log("password", password);
 
-        let user = await users.findOne((email));
+        let user = await users.findOne({ email: req.body.email });
         console.log("user:", user);
 
         if (!user) {
@@ -24,7 +24,7 @@ exports.login = async function (req, res) {
                 message: "User not found",
             });
 
-            return res.statuCode(response.statusCode).send(response);
+            return res.status(400).send(response);
         }
 
         let db_password = user.password;

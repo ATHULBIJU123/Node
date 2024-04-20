@@ -73,10 +73,10 @@ async function getData() {
 
         <tr>
         <td>${pd[i]._id}</td>
-        <td><input type="text" name="firstname" id="firstname-${pd[i].id}" value="${pd[i].firstName}" disabled = true></td>
-        <td><input type="text" name="lastname" id="lastname-${pd[i].id}" value="${pd[i].lastName}" disabled = true></td>
-        <td><input type="email" name="email" id="email-${pd[i].id}" value="${pd[i].email}" disabled = true></td>
-        <td><input type="password" name="password" id="password-${pd[i].id}" value="${pd[i].password}" disabled = true></td>
+        <td><input type="text" name="firstname" id="firstname-${pd[i]._id}" value="${pd[i].firstName}" disabled = true></td>
+        <td><input type="text" name="lastname" id="lastname-${pd[i]._id}" value="${pd[i].lastName}" disabled = true></td>
+        <td><input type="email" name="email" id="email-${pd[i]._id}" value="${pd[i].email}" disabled = true></td>
+        <td><input type="password" name="password" id="password-${pd[i]._id}" value="${pd[i].password}" disabled = true></td>
         <td><button onclick="handleEdit('${pd[i]._id} ')">Edit</button></td> 
         <td><button onclick="handleSave("${pd[i]._id}') ">Save</button></td>
         <td><button onclick="handleDelete('${pd[i]._id}')">Delete</button></td>
@@ -93,34 +93,34 @@ async function getData() {
 getData();
 
 function handleEdit(id) {
-    console.log("id", id);
+    console.log("id :", id);
     let firstname = document.getElementById(`firstname-${id}`);
     console.log("firstname:", firstname);
-    firstname.disabled = false;
+    // firstname.disabled = false;
 
     let lastname = document.getElementById(`lastname-${id}`); 
     console.log("lastname:", lastname); 
-    lastname.disabled = false;
+    // lastname.disabled = false;
 
     let email = document.getElementById(`email-${id}`); 
-    console.log("email", email); 
-    email.disabled = false;
+    console.log("email : ", email); 
+    // email.disabled = false;
 
     let password = document.getElementById(`password-${id}`); 
-    console.log("password", password); 
-    password.disabled = false;
+    console.log("password : ", password); 
+    // password.disabled = false;
 
 }
 
 async function handleSave(id) {
     console.log("id", id);
 
-    let firstnameTag = document.getElementById('firstname-${id}');
+    let firstnameTag = document.getElementById(`firstname-${id}`);
     console.log("firstnameTag", firstnameTag);
     let firstname = firstnameTag.value;
     console.log("firstname:", firstname);
 
-    let lastnameTag = document.getElementById('lastname-${id}');
+    let lastnameTag = document.getElementById(`lastname-${id}`);
     console.log("lastnameTag", lastnameTag);
     let lastname = lastnameTag.value;
     console.log("lastname:", lastname);
@@ -283,7 +283,7 @@ async function login() {
         alert(parsed_response.message);
 
         localStorage.setItem('token', token);
-        window.location.href = "get user.html";
+        window.location.href = "get_users.html";
         return;
     } else {
         alert(parsed_response.message)
