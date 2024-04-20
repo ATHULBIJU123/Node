@@ -78,8 +78,8 @@ async function getData() {
         <td><input type="text" name="lastname" id="lastname-${pd[i]._id}" value="${pd[i].lastName}" disabled = true></td>
         <td><input type="email" name="email" id="email-${pd[i]._id}" value="${pd[i].email}" disabled = true></td>
         <td><input type="password" name="password" id="password-${pd[i]._id}" value="${pd[i].password}" disabled = true></td>
-        <td><button onclick="handleEdit('${pd[i]._id} ')">Edit</button></td> 
-        <td><button onclick="handleSave("${pd[i]._id}') ">Save</button></td>
+        <td><button onclick="handleEdit('${pd[i]._id}')">Edit</button></td> 
+        <td><button onclick="handleSave('${pd[i]._id}') ">Save</button></td>
         <td><button onclick="handleDelete('${pd[i]._id}')">Delete</button></td>
 
         </tr>
