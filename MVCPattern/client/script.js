@@ -1,3 +1,4 @@
+
 async function submitForm() {
     let firstname = document.getElementById('firstname').value;
     console.log("first name:", firstname);
@@ -12,8 +13,8 @@ async function submitForm() {
     console.log("password: ", password);
 
     let data = {
-        firstName : firstname,
-        lastName : lastname,
+        firstname,
+        lastname,
         email,
         password
     }
@@ -90,25 +91,25 @@ async function getData() {
 
 }
 
-getData();
+// getData();
 
 function handleEdit(id) {
     console.log("id :", id);
     let firstname = document.getElementById(`firstname-${id}`);
     console.log("firstname:", firstname);
-    // firstname.disabled = false;
+    firstname.disabled = false;
 
     let lastname = document.getElementById(`lastname-${id}`); 
     console.log("lastname:", lastname); 
-    // lastname.disabled = false;
+    lastname.disabled = false;
 
     let email = document.getElementById(`email-${id}`); 
     console.log("email : ", email); 
-    // email.disabled = false;
+    email.disabled = false;
 
     let password = document.getElementById(`password-${id}`); 
     console.log("password : ", password); 
-    // password.disabled = false;
+    password.disabled = false;
 
 }
 

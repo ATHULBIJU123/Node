@@ -294,7 +294,6 @@ exports.updateUser = async function (req, res) {
     try {
         const userId = req.body.id; 
         //find a user using this id, if user not exists give error response
-        // const updatedData = req.body
         console.log("req.body :",req.body)
         // Validation
         if (!userId) {

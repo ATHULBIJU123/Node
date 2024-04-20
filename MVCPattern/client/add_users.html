@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 
 <body>
-    <form action="/submit" method="POST">
+    <form>
         <h2>REGISTRATION FORM</h2>
 
         <!--Input -->
@@ -20,13 +20,13 @@
 
         <div id="lastname-group">
             <label for=" name">Last Name:</label>
-            <input type="text" id="lastname" name="lastnane" onkeyup="validatelastName()">
+            <input type="text" id="lastname" name="lastname" onkeyup="validatelastName()">
             <div id="lastname-error"></div>
         </div>
 
         <!--Email Input-->
         <div id="email-group">
-            <label for "email">Email:</label>
+            <label for = "email">Email:</label>
             <input type="email" id="email" name="email" onkeyup="validateEmail()">
             <div id="email-error"></div>
         </div>
@@ -39,10 +39,10 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="button" onclick="submitForm()"> Submit </button>
+        <button type="button" id = "submit" onclick="submitForm()"> Submit </button>
 
     </form>
-
+<script src="script.js"></script>
 </body>
 
 </html>
