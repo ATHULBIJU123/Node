@@ -79,7 +79,7 @@ async function getData() {
         <td><input type="email" name="email" id="email-${pd[i]._id}" value="${pd[i].email}" disabled = true></td>
         <td><input type="password" name="password" id="password-${pd[i]._id}" value="${pd[i].password}" disabled = true></td>
         <td><button onclick="handleEdit('${pd[i]._id}')">Edit</button></td> 
-        <td><button onclick="handleSave('${pd[i]._id}') ">Save</button></td>
+        <td><button onclick="handleSave('${pd[i]._id}')">Save</button></td>
         <td><button onclick="handleDelete('${pd[i]._id}')">Delete</button></td>
 
         </tr>
@@ -158,6 +158,7 @@ async function handleSave(id) {
     });
     console.log("response", response);
     let parsed_response = await response.text();
+    console.log("parsed response :",parsed_response);
     
     if (parsed_response = "success") {
         alert("Updation Success");
@@ -167,6 +168,24 @@ async function handleSave(id) {
     return;
 }
 
+
+async function handleDelete(id) {
+    console.log('id :',id);
+
+    let response = await fetch('http://localhost:3001/users/:id',{
+        method : "DELETE",
+        headers : {
+            "Content-Type" : "text/plain"          
+        },
+        body : id,
+    });
+
+    console.log("response :",response);
+
+    if(response==='success'){
+        alert("Deletion Success")
+    }
+}
 
 function validatefirstName() {
     let firstname = document.getElementById('firstname').value;
