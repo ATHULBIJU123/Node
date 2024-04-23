@@ -109,12 +109,12 @@ function handleEdit(id) {
 
     let password = document.getElementById(`password-${id}`); 
     console.log("password : ", password); 
-    password.disabled = false;
+    password.disabled = true;
 
 }
 
 async function handleSave(id) {
-    console.log("id", id);
+    console.log("id :", id);
 
     let firstnameTag = document.getElementById(`firstname-${id}`);
     console.log("firstnameTag", firstnameTag);
@@ -150,21 +150,19 @@ async function handleSave(id) {
     console.log("jsonData: ", jsonData);
 
     let response = await fetch('/users', {
-        method: 'PUT',
+        method: "PUT",
         Headers: {
-            "Content-Type": "application/json",
-            body: jsonData,
+            "Content-Type": "application/json",  
         },
+        body: jsonData,
     });
     console.log("response", response);
-    let parsed_response = await response.text();
+    console.log("type of response :" ,typeof(response));
+    let parsed_response = await response.json();
     console.log("parsed response :",parsed_response);
-    
-    if (parsed_response = "success") {
-        alert("Updation Success");
-    } else {
-        alert("Updation Failed");
-    }
+    console.log("type of parsed_response :" ,typeof(parsed_response));
+
+    alert(parsed_response.message);
     return;
 }
 

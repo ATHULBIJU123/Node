@@ -291,10 +291,13 @@ exports.getSingleUser = async function (req, res){
 console.log("\n")
 
 exports.updateUser = async function (req, res) {
+    console.log("User Updation...")
     try {
-        const userId = req.body.id; 
+        const userId = req.body.id;
+        console.log("userId : ",userId);
         //find a user using this id, if user not exists give error response
-        console.log("req.body :",req.body)
+        console.log("req.body :",req.body);
+
         // Validation
         if (!userId) {
             let response = error_function ({
