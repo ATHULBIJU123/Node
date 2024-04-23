@@ -151,7 +151,7 @@ async function handleSave(id) {
 
     let response = await fetch('/users', {
         method: "PUT",
-        Headers: {
+        headers: {
             "Content-Type": "application/json",  
         },
         body: jsonData,
@@ -167,22 +167,19 @@ async function handleSave(id) {
 }
 
 
-async function handleDelete(id) {
-    console.log('id :',id);
-
-    let response = await fetch('http://localhost:3001/users/:id',{
-        method : "DELETE",
-        headers : {
-            "Content-Type" : "text/plain"          
+async function handleDelete(userId) {
+    console.log("userId :", userId);
+    let response = await fetch(`/users/${userId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
         },
-        body : id,
     });
 
-    console.log("response :",response);
-
-    if(response==='success'){
-        alert("Deletion Success")
-    }
+    let data = await response.json();
+    alert(data.message);
+    console.error('Error:', error.message);
+    alert('An error occurred while deleting user');
 }
 
 function validatefirstName() {

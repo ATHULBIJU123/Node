@@ -6,8 +6,8 @@ const bcrypt = require ('bcryptjs');
 
 exports.createUser = async function (req, res) {
     try {
-        const firstname = req.body.firstname;
-        const lastname = req.body.lastname;
+        const firstname = req.body.firstName;
+        const lastname = req.body.lastName;
 
         const email = req.body.email;
         const password = req.body.password;
@@ -310,8 +310,8 @@ exports.updateUser = async function (req, res) {
 
 
         const user = await users.findOneAndUpdate({_id : req.body.id},{
-            firstName : req.body.firstname,
-            lastName : req.body.lastname,
+            firstName : req.body.firstName,
+            lastName : req.body.lastName,
             email : req.body.email,
         },{
             upsert: true // Make this update into an upsert
