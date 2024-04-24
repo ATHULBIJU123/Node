@@ -6,8 +6,8 @@ const bcrypt = require ('bcryptjs');
 
 exports.createUser = async function (req, res) {
     try {
-        const firstname = req.body.firstName;
-        const lastname = req.body.lastName;
+        const firstname = req.body.firstname;
+        const lastname = req.body.lastname;
 
         const email = req.body.email;
         const password = req.body.password;
