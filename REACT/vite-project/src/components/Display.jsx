@@ -3,7 +3,10 @@ function Display ({displayData}) {
 
     return(
         <>
-        <h1>Data : {displayData}</h1>
+        <h1>First Name : {displayData.firstName}</h1>
+        <h1>Last Name : {displayData.lastName}</h1>
+        <h1>Email : {displayData.email}</h1>
+        <h1>Password : {displayData.password}</h1>
         </>
     )
 }
