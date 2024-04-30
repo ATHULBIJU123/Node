@@ -4,9 +4,11 @@ import { Fragment } from "react";
 // import Counter from "./components/Counter";
 // import Counter1 from "./components/Counter1";
 
-import Parent from "./components/Parent";
-function App() {
+// import Parent from "./components/Parent";
+// import Login from "./components/Conditional_rendering/Login";
+import Login1 from "./components/Conditional_rendering/Login1";
 
+function App() {
 
   return (
     <>
@@ -14,7 +16,9 @@ function App() {
     <Greeting1 name = {"Mark"} age= {15} /> */}
     {/* <Counter/> */}
     {/* <Counter1/> */}
-    <Parent/>
+    {/* <Parent/> */}
+    {/* <Login/> */}
+    <Login1/>
     </>
   )
 }
