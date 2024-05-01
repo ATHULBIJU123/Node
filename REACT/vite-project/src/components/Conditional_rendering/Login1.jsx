@@ -3,9 +3,9 @@ import React, {useState} from "react";
 export default function Login1() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-    const stateChange = (e) => {
-
-    }
+    const toggleLoginLogoff = () => {
+        setIsLoggedIn(!isLoggedIn)
+    };
 
     let content;
 
@@ -28,8 +28,8 @@ export default function Login1() {
     return(
         <>
             {content}
-            <button onClick={() => stateChange(!useState)}>
-                {`${useState ? 'Login' : 'Logout'}`}
+            <button onClick={toggleLoginLogoff}>
+                { isLoggedIn ? 'Logoff' : 'Login'}
             </button>
         </>
     )

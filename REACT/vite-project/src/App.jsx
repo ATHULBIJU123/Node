@@ -6,7 +6,9 @@ import { Fragment } from "react";
 
 // import Parent from "./components/Parent";
 // import Login from "./components/Conditional_rendering/Login";
-import Login1 from "./components/Conditional_rendering/Login1";
+// import Login1 from "./components/Conditional_rendering/Login1";
+// import Controlled from "./components/ControlledAndUncontrolled/Controlled";
+import Uncontrolled from "./components/ControlledAndUncontrolled/Uncontrolled";
 
 function App() {
 
@@ -18,7 +20,9 @@ function App() {
     {/* <Counter1/> */}
     {/* <Parent/> */}
     {/* <Login/> */}
-    <Login1/>
+    {/* <Login1/> */}
+    {/* <Controlled/> */}
+    <Uncontrolled/>
     </>
   )
 }

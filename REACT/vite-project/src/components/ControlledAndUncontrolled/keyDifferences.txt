@@ -1,0 +1,7 @@
+Key Differnces :
+
+    State Management : Controlled components have react manage the state, while uncontrolled components maintain their own state.
+
+    Accessing Values : In controlled components, ypu access via state, while in uncontrolled components, you often use refs to access element values.
+
+    Controlled components are typically prefered in React because they provide more predictable behaviour and make it easier to manage form data. However uncontrolled components can be useful in certain situations, such as when integrating with non-react code or when you want to minimize the use of React's state Management. The choice depends on the specefic use case anq requirements
