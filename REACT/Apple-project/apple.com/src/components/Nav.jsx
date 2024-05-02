@@ -6,7 +6,7 @@ function Navigation (){
             <nav>
                 <div class="navmain">
                     <ul class="items">
-                        <img src="Images/Logo/icons8-apple-30.png" alt="ilogo" width="20px" height="20px"></img>
+                        <img src="../components/Images/Logo/icons8-apple-30.png" alt="ilogo" width="20px" height="20px"></img>
                         <li>Store</li>
                         <li>Mac</li>
                         <li>iPad</li>
@@ -24,6 +24,7 @@ function Navigation (){
                 </div>
             </nav>
         </>
+        
     )
 }
 

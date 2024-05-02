@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    background-color: rgba(0, 0, 0, 0.945);
+    position:sticky;
+    top: 0px;
+}

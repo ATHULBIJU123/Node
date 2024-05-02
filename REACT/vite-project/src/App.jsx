@@ -7,8 +7,15 @@ import { Fragment } from "react";
 // import Parent from "./components/Parent";
 // import Login from "./components/Conditional_rendering/Login";
 // import Login1 from "./components/Conditional_rendering/Login1";
+
+//01-May
 // import Controlled from "./components/ControlledAndUncontrolled/Controlled";
-import Uncontrolled from "./components/ControlledAndUncontrolled/Uncontrolled";
+// import Uncontrolled from "./components/ControlledAndUncontrolled/Uncontrolled";
+
+//02-May
+// import MyComponentWithUpperCase from "./components/HigherOrderComponent/HigherOrdercomponent";
+// import MyPureComponent from "./components/PureComponents/MyPureComponents";
+import MyPureComponent1 from "./components/PureComponents/MyPureComponent1";
 
 function App() {
 
@@ -22,7 +29,10 @@ function App() {
     {/* <Login/> */}
     {/* <Login1/> */}
     {/* <Controlled/> */}
-    <Uncontrolled/>
+    {/* <Uncontrolled/> */}
+    {/* <MyComponentWithUpperCase text={"Hello, Welcome"}/> */}
+    {/* <MyPureComponent message= {"hai"}/> */}
+    <MyPureComponent1 message={"Helloo"}/>
     </>
   )
 }
