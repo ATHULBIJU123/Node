@@ -15,7 +15,10 @@ import { Fragment } from "react";
 //02-May
 // import MyComponentWithUpperCase from "./components/HigherOrderComponent/HigherOrdercomponent";
 // import MyPureComponent from "./components/PureComponents/MyPureComponents";
-import MyPureComponent1 from "./components/PureComponents/MyPureComponent1";
+// import MyPureComponent1 from "./components/PureComponents/MyPureComponent1";
+
+//03-May
+import Routing from "./components/Routing/Routing";
 
 function App() {
 
@@ -32,7 +35,8 @@ function App() {
     {/* <Uncontrolled/> */}
     {/* <MyComponentWithUpperCase text={"Hello, Welcome"}/> */}
     {/* <MyPureComponent message= {"hai"}/> */}
-    <MyPureComponent1 message={"Helloo"}/>
+    {/* <MyPureComponent1 message={"Helloo"}/> */}
+    <Routing />
     </>
   )
 }
