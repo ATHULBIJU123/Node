@@ -22,8 +22,9 @@ body{
 
 nav{
   position:sticky;
-  top: 0px;
-  display: inline-block;
+  background-color: black;
+  display: flex;
+  justify-content: flex-end;
 }
 
 nav ul li {
@@ -31,15 +32,14 @@ nav ul li {
 }
 .items{
   display: flex;
-  color: rgb(198, 19, 19);
+  /* color: rgb(198, 19, 19); */
   list-style: none;
 }
 
 
 body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
+  margin: 0px;
+  /* min-width: 320px; */
   min-height: 100vh;
 }
 
@@ -52,12 +52,12 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 500;
-  background-color: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
   color: #c7272a;
+  
 }
 button:hover {
   border-color: #646cff;
@@ -67,11 +67,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.welcome{
-  display: flex;
-  justify-content:center;
-  margin: 100px;
-}
 
 @media (prefers-color-scheme: light) {
   :root {

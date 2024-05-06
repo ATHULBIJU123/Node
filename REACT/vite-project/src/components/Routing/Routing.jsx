@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-router-dom";
 
 function Home () {
     return (
         <>
         <nav>
             <ul>
-                <li Link to = {'/'}>Home</li>
-                <li Link to = {'/profile'}>Profile</li>
-                <li Link to = {'/dashboard'}>Dashboard</li>
+                <li> <Link to = {'/'}>Home </Link></li>
+                <li> <Link to = {'/profile/Jane'}>Profile</Link></li>
+                <li> <Link to = {'/dashboard'}>Dashboard </Link> </li>
             </ul>
         </nav>
 
@@ -17,9 +17,11 @@ function Home () {
 }
 
 function Profile () {
+
+    const {name} = useParams();
     return (
         <>
-        <h1>Hello ! This is My Profile</h1>
+        <h1>Hello ! My name is {name}. This is My Profile.</h1>
         </>
     )
 }
@@ -48,7 +50,7 @@ function Dashboard () {
         <div>
             <ul>
                 <li><Link to = {'/dashboard/settings'}>Settings</Link></li>
-                <li><Link to = {'/dashboars/about'}>About</Link></li>
+                <li><Link to = {'/dashboard/about'}>About</Link></li>
             </ul>
 
             <Routes>
@@ -64,18 +66,12 @@ function Routing () {
     return (
         <>
         <Router>
-            <nav>
-                <ul>
-                    <li><Link to={'/home'}>Home</Link></li>
-                    <li><Link to={'/profile'}>Profile</Link></li>
-                    <li><Link to={'/dashboard'}>Dashboard</Link></li>
-                </ul>
-            </nav>
+
 
             <Routes>
-                <Route exact path={'/home'}  element= {<Home/>} />
-                <Route exact path= {"/profile"} element = {<Profile/>}/>
-                <Route exact path = {'/dashboard'} element = {<Dashboard/>}/>
+                <Route exact path={'/'}  element= {<Home/>} />
+                <Route exact path= {"/profile/:name"} element = {<Profile/>}/>
+                <Route exact path = {'/dashboard/*'} element = {<Dashboard/>}/>
             </Routes>
         </Router>
         </>
