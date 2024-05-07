@@ -20,6 +20,9 @@ import { Fragment } from "react";
 //03-May
 import Routing from "./components/Routing/Routing";
 
+//07_May
+import UseCallbackComoponent from "./components/UseCallBack/UseCallBack";
+
 function App() {
 
   return (
@@ -36,7 +39,8 @@ function App() {
     {/* <MyComponentWithUpperCase text={"Hello, Welcome"}/> */}
     {/* <MyPureComponent message= {"hai"}/> */}
     {/* <MyPureComponent1 message={"Helloo"}/> */}
-    <Routing />
+    {/* <Routing /> */}
+    <UseCallbackComoponent/>
     </>
   )
 }

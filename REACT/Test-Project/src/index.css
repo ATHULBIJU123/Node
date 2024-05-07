@@ -16,13 +16,12 @@
   }
 
 body{
-  background-image : linear-gradient(white, purple);
+  background-image : linear-gradient(purple, white);
 }
 
 
 nav{
   position:sticky;
-  background-color: black;
   display: flex;
   justify-content: flex-end;
 }
@@ -32,7 +31,6 @@ nav ul li {
 }
 .items{
   display: flex;
-  /* color: rgb(198, 19, 19); */
   list-style: none;
 }
 
@@ -43,6 +41,17 @@ body {
   min-height: 100vh;
 }
 
+.container{
+  margin-top: 200px;
+  color:white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: large;
+  background-color: inherit;
+  justify-content: center;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
