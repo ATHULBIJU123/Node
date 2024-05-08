@@ -18,10 +18,14 @@ import { Fragment } from "react";
 // import MyPureComponent1 from "./components/PureComponents/MyPureComponent1";
 
 //03-May
-import Routing from "./components/Routing/Routing";
+// import Routing from "./components/Routing/Routing";
 
 //07_May
-import UseCallbackComoponent from "./components/UseCallBack/UseCallBack";
+// import UseCallbackComoponent from "./components/Hooks/UseCallBack/UseCallBack";
+
+//08-May
+// import UseContextComponent from "./components/Hooks/UseContext/UseContectComponent";
+import UseContextComponent1 from "./components/Hooks/UseContext/UseContextComponent1";
 
 function App() {
 
@@ -40,7 +44,9 @@ function App() {
     {/* <MyPureComponent message= {"hai"}/> */}
     {/* <MyPureComponent1 message={"Helloo"}/> */}
     {/* <Routing /> */}
-    <UseCallbackComoponent/>
+    {/* <UseCallbackComoponent/> */}
+    {/* <UseContextComponent/> */}
+    <UseContextComponent1/>
     </>
   )
 }
