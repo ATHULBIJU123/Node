@@ -1,6 +1,6 @@
 import Navigation from './Components/client/LandingPage/Navigation'
 import Container from './Components/client/LandingPage/Container'
-// import SignIn from './Components/client/SignInPage/SignIn'
+import SignIn from './Components/client/SignInPage/SignIn'
 import './App.css'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
     <Navigation/>
     <Container/>
-    {/* <SignIn/> */}
+    <SignIn onClick = {SignIn}/>
     </>
   )
 }

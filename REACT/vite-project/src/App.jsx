@@ -25,7 +25,12 @@ import { Fragment } from "react";
 
 //08-May
 // import UseContextComponent from "./components/Hooks/UseContext/UseContectComponent";
-import UseContextComponent1 from "./components/Hooks/UseContext/UseContextComponent1";
+// import UseContextComponent1 from "./components/Hooks/UseContext/UseContextComponent1";
+
+
+//10-May
+// import useEffectComponent from "./components/Hooks/useEffect/useEffectComponent";
+import useEffectComponent1 from "./components/Hooks/useEffect/useEffectComponent1";
 
 function App() {
 
@@ -46,7 +51,9 @@ function App() {
     {/* <Routing /> */}
     {/* <UseCallbackComoponent/> */}
     {/* <UseContextComponent/> */}
-    <UseContextComponent1/>
+    {/* <UseContextComponent1/> */}
+    {/* <useEffectComponent/> */}
+    <useEffectComponent1/>
     </>
   )
 }

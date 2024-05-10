@@ -65,7 +65,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: border-color 0.25s;
-  color: #ffffff;
+  color: #160303;
   background-color: initial;
 }
 button:hover {
