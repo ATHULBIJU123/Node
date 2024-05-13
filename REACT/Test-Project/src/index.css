@@ -42,8 +42,8 @@ body {
 }
 
 .container{
-  margin-top: 200px;
-  color:white;
+  margin-top: 150px;
+  color:rgb(243, 238, 238);
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: large;
   background-color: inherit;
@@ -69,7 +69,7 @@ button {
   background-color: initial;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #e60b54;
 }
 button:focus,
 button:focus-visible {

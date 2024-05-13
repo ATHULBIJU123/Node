@@ -29,8 +29,8 @@ import { Fragment } from "react";
 
 
 //10-May
-// import useEffectComponent from "./components/Hooks/useEffect/useEffectComponent";
-import useEffectComponent1 from "./components/Hooks/useEffect/useEffectComponent1";
+// import UseEffectComponent from "./components/Hooks/useEffect/useEffectComponent"
+import UseEffectComponent1 from "./components/Hooks/useEffect/useEffectComponent1";
 
 function App() {
 
@@ -52,8 +52,8 @@ function App() {
     {/* <UseCallbackComoponent/> */}
     {/* <UseContextComponent/> */}
     {/* <UseContextComponent1/> */}
-    {/* <useEffectComponent/> */}
-    <useEffectComponent1/>
+    {/* <UseEffectComponent/> */}
+    <UseEffectComponent1/>
     </>
   )
 }
