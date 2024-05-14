@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from './Components/client/LandingPage/Navigation'
 import Container from './Components/client/LandingPage/Container'
 import SignIn from './Components/client/SignInPage/SignIn'
@@ -11,10 +11,11 @@ function App() {
       <Router>
         <Navigation/>
         <Container/>
+        <Switch>
         <Routes>
-        <Route path="/signin" component={SignIn} />
-
+        <Route path="/signin" exact element={<SignIn/>} />
         </Routes>
+        </Switch>
       </Router>
     </>
   )

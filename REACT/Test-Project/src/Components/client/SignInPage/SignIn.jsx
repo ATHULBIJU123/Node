@@ -44,8 +44,6 @@ function SignIn() {
                     <button type="button" onclick="submitForm()">SignIn</button>
                 </div>
             </form>
-
-            <Link to="/signin">Sign In</Link>
             
         </>
 
