@@ -11,8 +11,6 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-
   }
 
 body{
@@ -33,7 +31,6 @@ nav ul li {
   display: flex;
   list-style: none;
 }
-
 
 body {
   margin: 0px;
