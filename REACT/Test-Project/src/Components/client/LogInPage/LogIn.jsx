@@ -4,8 +4,8 @@ function LogIn() {
         <>
             <link rel="stylesheet" href="../../../Signin.css" />
             <form action="/submit" method="POST">
-                <h2>Sign In</h2>
-                <div id="firstname-group">
+                <h2>Log In</h2>
+                {/* <div id="firstname-group">
                     <label htmlFor="name">First Name:</label>
                     <input
                         type="text"
@@ -24,7 +24,7 @@ function LogIn() {
                         onkeyup="validatelastName()"
                     />
                     <div id="lastname-error" />
-                </div>
+                </div> */}
                 <div id="email-group">
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" onkeyup="validateEmail()" />
