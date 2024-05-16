@@ -29,17 +29,7 @@ function AddUSer() {
                     <input type="email" id="email" name="email" onkeyup="validateEmail()" />
                     <div id="email-error" />
                 </div>
-                <div id="password-group">
-                    <label htmlFor="password">Password: </label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        
-                        onkeyup="validatePassword()"
-                    />
-                    <div id="password-error" />
-                </div>
+
                 <div className="btn">
                     <button type="button" onclick="submitForm()">Add User</button>
                 </div>
